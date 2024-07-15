@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .img-gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .img-container {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+        }
+        .img-gallery img {
+            max-width: 150px;
+            height: auto;
+            cursor: pointer;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 20px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+        }
+        .full-img {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .full-img img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .full-img span {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+        .custom-file-input {
+            display: none;
+        }
+        .custom-file-label {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Gallery</h1>
+    <label for="fileInput" class="custom-file-label">Upload Images</label>
+    <input type="file" id="fileInput" class="custom-file-input" accept="image/*" multiple>
+    <div class="full-img" id="Full-img-box">
+        <img src="/Grid_Gallery_Img/img1.jpg" id="full-img">
+        <span onclick="CloseFullImg()">X</span>
+    </div>
+    <div class="img-gallery" id="imageContainer">
+        <div class="img-container">
+            <img src="/Grid_Gallery_Img/img4.jpg" alt="img4" onclick="OpenFullImg(this.src)">
+            <button class="delete-btn" onclick="deleteImage(this)">X</button>
+        </div>
+        <div class="img-container">
+            <img src="/Grid_Gallery_Img/img5.jpg" alt="img5" onclick="OpenFullImg(this.src)">
+            <button class="delete-btn" onclick="deleteImage(this)">X</button>
+        </div>
+        <div class="img-container">
+            <img src="/Grid_Gallery_Img/img3.jpg" alt="img3" onclick="OpenFullImg(this.src)">
+            <button class="delete-btn" onclick="deleteImage(this)">X</button>
+        </div>
+        <div class="img-container">
+            <img src="/Grid_Gallery_Img/img1.jpg" alt="img1" onclick="OpenFullImg(this.src)">
+            <button class="delete-btn" onclick="deleteImage(this)">X</button>
+        </div>
+        <div class="img-container">
+            <img src="/Grid_Gallery_Img/img2.jpg" alt="img2" onclick="OpenFullImg(this.src)">
+            <button class="delete-btn" onclick="deleteImage(this)">X</button>
+        </div>
+        <div class="img-container">
+            <img src="/Grid_Gallery_Img/img6.jpg" alt="img6" onclick="OpenFullImg(this.src)">
+            <button class="delete-btn" onclick="deleteImage(this)">X</button>
+        </div>
+        <div class="img-container">
+            <img src="/Grid_Gallery_Img/img7.jpg" alt="img7" onclick="OpenFullImg(this.src)">
+            <button class="delete-btn" onclick="deleteImage(this)">X</button>
+        </div>
+        <div class="img-container">
+            <img src="/Grid_Gallery_Img/img8.jpg" alt="img8" onclick="OpenFullImg(this.src)">
+            <button class="delete-btn" onclick="deleteImage(this)">X</button>
+        </div>
+        <div class="img-container">
+            <img src="/Grid_Gallery_Img/img5.jpg" alt="img9" onclick="OpenFullImg(this.src)">
+            <button class="delete-btn" onclick="deleteImage(this)">X</button>
+        </div>
+    </div>
+    <script>
+        let fullimgbox = document.getElementById('Full-img-box');
+        let fullimg = document.getElementById('full-img');
+
+        function OpenFullImg(pic) {
+            fullimgbox.style.display = 'flex';
+            fullimg.src = pic;
+        }
+
+        function CloseFullImg() {
+            fullimgbox.style.display = 'none';
+        }
+
+        function deleteImage(button) {
+            const imgContainer = button.parentElement;
+            imgContainer.remove();
+        }
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const files = event.target.files;
+            const imageContainer = document.getElementById('imageContainer');
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgContainer = document.createElement('div');
+                    imgContainer.classList.add('img-container');
+
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = "uploaded image";
+                    img.onclick = function() {
+                        OpenFullImg(img.src);
+                    };
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.innerText = 'X';
+                    deleteBtn.classList.add('delete-btn');
+                    deleteBtn.onclick = function() {
+                        deleteImage(deleteBtn);
+                    };
+
+                    imgContainer.appendChild(img);
+                    imgContainer.appendChild(deleteBtn);
+                    imageContainer.appendChild(imgContainer);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
+</body>
+</html>

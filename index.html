@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+   
+        
+</head>
+<body>
+    <div class="container">
+        <h1>My Gallery</h1>
+        <label for="fileInput" class="custom-file-label">Upload Images</label>
+        <input type="file" id="fileInput" class="custom-file-input" accept="image/*" multiple>
+        <div class="full-img" id="Full-img-box">
+            <img src="/Grid_Gallery_Img/img1.jpg" id="full-img">
+            <span onclick="CloseFullImg()">X</span>
+        </div>
+        <div class="img-gallery" id="imageContainer">
+            <div class="img-container">
+                <img src="/Grid_Gallery_Img/img4.jpg" alt="img4" onclick="OpenFullImg(this.src)">
+                <button class="delete-btn" onclick="deleteImage(this)"><img src="icons8-delete-30.png" alt="delete-button"></button>
+            </div>
+            <div class="img-container">
+                <img src="/Grid_Gallery_Img/img5.jpg" alt="img5" onclick="OpenFullImg(this.src)">
+                <button class="delete-btn" onclick="deleteImage(this)"><img src="icons8-delete-30.png" alt="delete-button"></button>
+            </div>
+            <div class="img-container">
+                <img src="/Grid_Gallery_Img/img3.jpg" alt="img3" onclick="OpenFullImg(this.src)">
+                <button class="delete-btn" onclick="deleteImage(this)"><img src="icons8-delete-30.png" alt="delete-button"></button>
+            </div>
+            <div class="img-container">
+                <img src="/Grid_Gallery_Img/img1.jpg" alt="img1" onclick="OpenFullImg(this.src)">
+                <button class="delete-btn" onclick="deleteImage(this)"><img src="icons8-delete-30.png" alt="delete-button"></button>
+            </div>
+            <div class="img-container">
+                <img src="/Grid_Gallery_Img/img2.jpg" alt="img2" onclick="OpenFullImg(this.src)">
+                <button class="delete-btn" onclick="deleteImage(this)"><img src="icons8-delete-30.png" alt="delete-button"></button>
+            </div>
+            <div class="img-container">
+                <img src="/Grid_Gallery_Img/img6.jpg" alt="img6" onclick="OpenFullImg(this.src)">
+                <button class="delete-btn" onclick="deleteImage(this)"><img src="icons8-delete-30.png" alt="delete-button"></button>
+            </div>
+            <div class="img-container">
+                <img src="/Grid_Gallery_Img/img7.jpg" alt="img7" onclick="OpenFullImg(this.src)">
+                <button class="delete-btn" onclick="deleteImage(this)"><img src="icons8-delete-30.png" alt="delete-button"></button>
+            </div>
+            <div class="img-container">
+                <img src="/Grid_Gallery_Img/img8.jpg" alt="img8" onclick="OpenFullImg(this.src)">
+                <button class="delete-btn" onclick="deleteImage(this)"><img src="icons8-delete-30.png" alt="delete-button"></button>
+            </div>
+            <div class="img-container">
+                <img src="/Grid_Gallery_Img/img5.jpg" alt="img9" onclick="OpenFullImg(this.src)">
+                <button class="delete-btn" onclick="deleteImage(this)"><img src="icons8-delete-30.png" alt="delete-button"></button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
